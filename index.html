@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abby Cleaning Co. | Premium Cleaning &amp; Steam, Toronto &amp; GTA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0d2a2e;--teal:#1b8a8c;--teal-d:#126466;--mist:#eef8f7;--paper:#fbfefd;--line:#cfe5e3;--sun:#f4c95d;--text:#0d2a2e;--card:#ffffff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0a1d20;--mist:#0f2629;--line:#1f4144;--text:#e6f4f3;--card:#122d31}}
+:root[data-theme="dark"]{--paper:#0a1d20;--mist:#0f2629;--line:#1f4144;--text:#e6f4f3;--card:#122d31}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--text);font:400 17px/1.6 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,system-ui,sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+.btn{display:inline-block;background:var(--teal);color:#fff;padding:14px 26px;border-radius:999px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font:600 16px Figtree,sans-serif}
+.btn:hover{background:var(--teal-d)}
+.btn.alt{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.5)}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:calc(14px + env(safe-area-inset-top,0px)) 5vw 14px;color:#fff}
+nav{background:rgba(13,42,46,.94)}
+nav .brand{font:800 22px "Bricolage Grotesque",sans-serif;text-decoration:none;margin-right:auto}
+.links{display:flex;gap:26px;list-style:none;margin:0 24px 0 0;padding:0}
+.links a{text-decoration:none;font-weight:500;font-size:15px;opacity:.92}
+.links a:hover{opacity:1;color:var(--sun)}
+#burger{display:none;width:44px;height:44px;margin-left:8px;background:none;border:1px solid rgba(255,255,255,.4);border-radius:12px;cursor:pointer;position:relative}
+#burger span,#burger::before,#burger::after{content:"";position:absolute;left:11px;right:11px;height:2px;background:#fff;transition:.25s}
+#burger span{top:21px}#burger::before{top:14px}#burger::after{top:28px}
+#burger[aria-expanded=true] span{opacity:0}
+#burger[aria-expanded=true]::before{top:21px;transform:rotate(45deg)}
+#burger[aria-expanded=true]::after{top:21px;transform:rotate(-45deg)}
+@media (max-width:860px){#burger{display:block}nav .btn{display:none}.links{position:fixed;top:0;left:0;right:0;flex-direction:column;gap:0;margin:0;padding:calc(76px + env(safe-area-inset-top,0px)) 6vw 24px;background:#0d2a2e;transform:translateY(-110%);transition:transform .3s;z-index:-1}.links.open{transform:none}.links a{display:block;padding:16px 0;font-size:18px;border-bottom:1px solid rgba(255,255,255,.12)}}
+footer .fg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px;text-align:left;max-width:1180px;margin:0 auto 32px}
+footer h3{font-size:18px;color:#fff;margin:0 0 14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+footer a{text-decoration:none}footer a:hover{color:var(--sun)}
+footer p{margin:10px 0 0}
+footer .cp{border-top:1px solid rgba(255,255,255,.15);padding-top:20px}
+@media (max-width:820px){footer .fg{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){footer .fg{grid-template-columns:1fr}}
+nav .btn{padding:10px 20px;font-size:15px}
+/* scroll scene */
+.scene{height:420vh;position:relative}
+.stage{position:sticky;top:0;height:100vh;overflow:hidden;background:#0d2a2e}
+.stage svg,.stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#zoom{transform-origin:62% 64%;will-change:transform}
+.shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,28,31,.78),rgba(7,28,31,.1) 70%);pointer-events:none}
+.ov{position:absolute;inset:0;display:flex;align-items:center;padding:0 6vw;opacity:0;visibility:hidden;color:#fff}
+.ov .in{max-width:560px}
+.ov h1{font-size:clamp(40px,7vw,84px);font-weight:800}
+.ov h2{font-size:clamp(34px,5vw,60px);font-weight:800}
+.ov p{font-size:clamp(17px,2vw,21px);margin:18px 0 26px;color:#e3f3f2}
+.ov .row{display:flex;gap:12px;flex-wrap:wrap}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chips span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);padding:8px 16px;border-radius:999px;font-weight:500}
+.ov.rev{justify-content:center;flex-direction:column;align-items:stretch}
+.ov.rev h2{margin-bottom:22px;text-align:center}
+.rv{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1100px;margin:0 auto}
+.rv figure{margin:0;background:rgba(255,255,255,.94);color:#0d2a2e;border-radius:18px;padding:22px}
+.rv blockquote{margin:0 0 12px;font-size:16px;line-height:1.5}
+.rv figcaption{font-weight:600;font-size:14px}
+.stars{color:#d99a00;letter-spacing:2px;margin-bottom:8px}
+.hint{position:absolute;bottom:calc(22px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);color:#fff;font-size:14px;opacity:.85;transition:opacity .3s}
+/* lower sections */
+section.pg{padding:96px 6vw;max-width:1180px;margin:0 auto}
+.lead{font-size:clamp(32px,5vw,56px);font-weight:800}
+.sub{max-width:520px;margin:14px 0 36px;opacity:.85}
+.book{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
+form{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:grid;gap:6px;font-weight:600;font-size:14px}
+label.full,.full{grid-column:1/-1}
+input,select,textarea{font:400 16px Figtree,sans-serif;padding:13px 14px;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--text);width:100%}
+textarea{min-height:90px;resize:vertical}
+.ok{display:none;background:var(--mist);border:1px solid var(--teal);padding:16px;border-radius:12px;font-weight:500}
+ul.tick{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+ul.tick li{padding-left:34px;position:relative}
+ul.tick li::before{content:"";position:absolute;left:0;top:5px;width:20px;height:20px;border-radius:50%;background:var(--teal)}
+ul.tick li::after{content:"";position:absolute;left:6px;top:9px;width:8px;height:5px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg)}
+.faq{max-width:780px}
+details{border-bottom:1px solid var(--line);padding:20px 0}
+summary{cursor:pointer;font:600 20px "Bricolage Grotesque",sans-serif;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";font-size:26px;line-height:1;color:var(--teal);transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:12px 0 0;max-width:640px;opacity:.9}
+footer{background:#0d2a2e;color:#cfe5e3;padding:48px 6vw calc(48px + env(safe-area-inset-bottom,0px));text-align:center}
+footer b{font:800 24px "Bricolage Grotesque",sans-serif;color:#fff}
+.bas{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.ba{position:relative;aspect-ratio:4/3;border-radius:18px;overflow:hidden;border:1px solid var(--line);--p:50%;touch-action:pan-y;cursor:ew-resize;user-select:none;-webkit-user-select:none}
+.ba svg,.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.ba .bf{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--p)) 0 0)}
+.ba .hd{position:absolute;top:0;bottom:0;left:var(--p);width:4px;margin-left:-2px;background:#fff;box-shadow:0 0 8px rgba(0,0,0,.4)}
+.ba .hd::after{content:"↔";position:absolute;top:50%;left:50%;width:42px;height:42px;margin:-21px;border-radius:50%;background:#fff;color:#126466;display:grid;place-items:center;font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+.ba .tg{position:absolute;bottom:12px;padding:5px 12px;border-radius:999px;background:rgba(13,42,46,.78);color:#fff;font:600 13px Figtree,sans-serif;z-index:2}
+.ba .tg.l{left:12px}.ba .tg.r{right:12px}
+.bat{margin:12px 2px 0;font-weight:600}
+@media (max-width:820px){.bas{grid-template-columns:1fr}}
+.eyebrow{font:600 16px Figtree,sans-serif;color:var(--teal);margin:0 0 10px}
+.rhead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+.revs{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.rc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.rc .stars{color:#d99a00;letter-spacing:2px;margin-bottom:8px}
+.rc p{margin:0 0 12px}.rc b{font-size:14px}
+#rform{display:none;margin-bottom:28px;max-width:680px}
+@keyframes puff{0%{transform:translateY(0) scale(.6);opacity:0}30%{opacity:.8}100%{transform:translateY(-120px) scale(1.8);opacity:0}}
+.puff{animation:puff 3.2s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@media (max-width:820px){.book{grid-template-columns:1fr;gap:32px}.rv{grid-template-columns:1fr}.rv figure:nth-child(n+3){display:none}form{grid-template-columns:1fr}.shade{background:linear-gradient(0deg,rgba(7,28,31,.85),rgba(7,28,31,.25))}.ov{align-items:flex-end;padding-bottom:12vh}.ov.rev{align-items:stretch;justify-content:center;padding-bottom:0}}
+@media (prefers-reduced-motion:reduce){.puff{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav><a class="brand" href="#scene">Abby Cleaning Co.</a>
+ <ul class="links" id="links"><li><a href="#scene">Home</a></li><li><a href="#results">Before &amp; After</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#faq">FAQs</a></li><li><a href="#contact">Contact</a></li></ul>
+ <a class="btn" href="#book">Book a clean</a>
+ <button id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="links"><span></span></button></nav>
+
+<div class="scene" id="scene">
+ <div class="stage">
+  <!-- To use your AI video: set VIDEO_SRC in the script below. Until then, this vector scene zooms instead. -->
+  <svg id="zoom" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+   <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8f6f5"/><stop offset="1" stop-color="#cfe9e7"/></linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe6ee"/><stop offset="1" stop-color="#f6fbf7"/></linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9c3a0"/><stop offset="1" stop-color="#b99f78"/></linearGradient>
+    <radialGradient id="glint"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+   <mask id="dm"><rect width="1600" height="900" fill="#fff"/><rect id="mk" x="0" y="0" width="0" height="900" fill="#000"/></mask></defs>
+   <rect width="1600" height="620" fill="url(#wall)"/>
+   <rect x="120" y="70" width="760" height="430" rx="10" fill="url(#sky)" stroke="#fff" stroke-width="14"/>
+   <g fill="#8fb7c4" opacity=".7"><rect x="170" y="330" width="60" height="170"/><rect x="250" y="270" width="80" height="230"/><rect x="350" y="360" width="50" height="140"/><rect x="560" y="300" width="70" height="200"/><rect x="650" y="350" width="90" height="150"/><rect x="760" y="280" width="60" height="220"/></g>
+   <rect x="470" y="140" width="14" height="360" fill="#7aa3b1"/><ellipse cx="477" cy="190" rx="30" ry="10" fill="#7aa3b1"/>
+   <rect x="500" y="70" width="10" height="430" fill="#fff"/>
+   <rect y="620" width="1600" height="280" fill="url(#floor)"/>
+   <rect x="940" y="400" width="600" height="250" rx="40" fill="#fff"/>
+   <rect x="940" y="330" width="600" height="110" rx="40" fill="#f2f7f7"/>
+   <rect x="960" y="560" width="560" height="40" rx="10" fill="#dfeceb"/>
+   <rect x="990" y="470" width="220" height="70" rx="20" fill="#1b8a8c" opacity=".85"/>
+   <!-- dirt: gets wiped away as you scroll -->
+   <g mask="url(#dm)"><rect width="1600" height="900" fill="#7d6a45" opacity=".3"/><g fill="#5b4a2b" opacity=".55"><ellipse cx="1080" cy="500" rx="46" ry="22"/><ellipse cx="1330" cy="520" rx="60" ry="26"/><ellipse cx="1450" cy="470" rx="34" ry="16"/><ellipse cx="300" cy="700" rx="90" ry="22"/><ellipse cx="760" cy="790" rx="120" ry="28"/><ellipse cx="1200" cy="760" rx="100" ry="24"/><ellipse cx="1450" cy="700" rx="80" ry="20"/></g><g fill="#6b6b5a" opacity=".5"><circle cx="250" cy="200" r="30"/><circle cx="380" cy="150" r="22"/><circle cx="700" cy="250" r="34"/><circle cx="780" cy="160" r="20"/></g></g>
+   <!-- cleaner -->
+   <g id="cl" transform="translate(-650,0)">
+    <rect x="560" y="470" width="150" height="260" rx="60" fill="#fff"/>
+    <rect x="575" y="520" width="120" height="210" rx="40" fill="#1b8a8c"/>
+    <circle cx="635" cy="410" r="52" fill="#e0b08c"/>
+    <path d="M580 400 q55 -75 110 0 q-55 -20 -110 0z" fill="#111"/>
+    <rect x="585" y="395" width="100" height="14" fill="#111"/>
+    <path d="M690 560 L900 600" stroke="#e0b08c" stroke-width="34" stroke-linecap="round"/>
+    <rect x="880" y="580" width="110" height="46" rx="16" fill="#0d2a2e"/>
+    <rect x="975" y="592" width="60" height="22" rx="8" fill="#9aa9ab"/>
+   </g>
+   <g id="st" transform="translate(-650,0)" fill="#fff" opacity=".85">
+    <circle class="puff" cx="1045" cy="595" r="22"/>
+    <circle class="puff" cx="1060" cy="590" r="30" style="animation-delay:-1s"/>
+    <circle class="puff" cx="1035" cy="600" r="26" style="animation-delay:-2s"/>
+   </g>
+   <g id="sp" transform="translate(-650,0)"><circle cx="930" cy="520" r="46" fill="url(#glint)"/><circle cx="860" cy="470" r="34" fill="url(#glint)"/><circle cx="900" cy="600" r="28" fill="url(#glint)"/><circle cx="800" cy="560" r="22" fill="url(#glint)"/></g>
+  </svg>
+  <video id="vid" muted playsinline preload="auto" style="display:none"></video>
+  <div class="shade"></div>
+
+  <div class="ov" data-c=".07" data-w=".16"><div class="in">
+   <h1>Toronto’s cleaners. Steam included.</h1>
+   <p>GTA’s premium cleaning and steam experts. Fully insured, with same-day booking.</p>
+   <div class="row"><a class="btn" href="#book">Book a clean</a><a class="btn alt" href="#faq">Read the FAQs</a></div>
+  </div></div>
+
+  <div class="ov" data-c=".30" data-w=".14"><div class="in">
+   <h2>Every room, every kind of clean.</h2>
+   <div class="chips"><span>Residential</span><span>Deep clean</span><span>Move in / out</span><span>Carpet &amp; sofa</span><span>Commercial</span></div>
+  </div></div>
+
+  <div class="ov" data-c=".53" data-w=".14"><div class="in">
+   <h2>Up close, nothing gets missed.</h2>
+   <p>Steam lifts grime from carpets, sofas, grout and corners where a regular wipe stops. You come home to a space that looks and smells fresh.</p>
+  </div></div>
+
+  <div class="ov" data-c=".86" data-w=".14"><div class="in">
+   <h2>Spotless, start to finish.</h2>
+   <p>From dusty and tired to fresh and bright. Book your home clean today.</p>
+   <div class="row"><a class="btn" href="#book">Book a clean</a><a class="btn alt" href="#reviews">See reviews</a></div>
+  </div></div>
+  <div class="hint" id="hint">Scroll to step inside</div>
+ </div>
+</div>
+
+<section class="pg" id="results">
+ <p class="eyebrow">Real results</p>
+ <h2 class="lead">Before &amp; after.</h2>
+ <p class="sub">The sliders move as you scroll. Drag any one to compare for yourself.</p>
+ <div class="bas" id="bas"></div>
+</section>
+
+<section class="pg" id="book">
+ <div class="book">
+  <div>
+   <h2 class="lead">Book your clean.</h2>
+   <p class="sub">Tell us about your space. We reply quickly, and same-day slots are often open.</p>
+   <ul class="tick"><li>Residential, deep clean and move in / out</li><li>Carpet and sofa steam cleaning</li><li>Commercial and office cleaning</li><li>Fully insured team serving Toronto and the GTA</li></ul>
+  </div>
+  <form id="f">
+   <label>Full name<input name="name" required autocomplete="name"></label>
+   <label>Phone<input name="phone" type="tel" required autocomplete="tel"></label>
+   <label>Email<input name="email" type="email" autocomplete="email"></label>
+   <label>Postal code<input name="postal" autocomplete="postal-code" placeholder="M5V 2T6"></label>
+   <label>Service<select name="service"><option>Residential clean</option><option>Deep clean</option><option>Move in / out</option><option>Carpet &amp; sofa steam</option><option>Commercial</option></select></label>
+   <label>Preferred date<input name="date" type="date"></label>
+   <label class="full">Anything we should know?<textarea name="msg" placeholder="Bedrooms, pets, stairs, stains…"></textarea></label>
+   <div class="full"><button class="btn" type="submit">Request my booking</button></div>
+   <div class="ok full" id="ok" role="status">Thanks! Your request is in. We’ll contact you shortly to confirm your clean.</div>
+  </form>
+ </div>
+</section>
+
+<section class="pg" id="reviews">
+ <div class="rhead"><div><p class="eyebrow">Customer reviews</p><h2 class="lead">What our clients say.</h2></div><button class="btn" id="rbtn" type="button">Submit review</button></div>
+ <form id="rform">
+  <label>Your name<input name="rname" required></label>
+  <label>Rating<select name="rate"><option value="5">★★★★★ Excellent</option><option value="4">★★★★ Good</option><option value="3">★★★ Okay</option><option value="2">★★ Poor</option><option value="1">★ Bad</option></select></label>
+  <label class="full">Your review<textarea name="rtext" required placeholder="Tell us about your clean…"></textarea></label>
+  <div class="full"><button class="btn" type="submit">Post review</button></div>
+ </form>
+ <div class="ok" id="rok" role="status" style="margin-bottom:20px">Thank you! Your review has been added.</div>
+ <div class="revs" id="revs">
+  <div class="rc"><div class="stars">★★★★★</div><p>Our condo was spotless after the deep clean. The sofa looks new again.</p><b>Priya S., Liberty Village (sample review)</b></div>
+  <div class="rc"><div class="stars">★★★★★</div><p>Booked in the morning, cleaned by the afternoon. Moving out was one less worry.</p><b>Daniel M., North York (sample review)</b></div>
+  <div class="rc"><div class="stars">★★★★★</div><p>Professional, on time, and they steamed our office carpets over the weekend.</p><b>Sara K., Mississauga (sample review)</b></div>
+ </div>
+</section>
+
+<section class="pg faq" id="faq">
+ <p class="eyebrow">Good to Know</p>
+ <h2 class="lead">Frequently Asked Questions</h2>
+ <p class="sub">Can’t find yours? Message us on Instagram or use the form above.</p>
+ <details><summary>Which areas do you serve?</summary><p>We clean homes and businesses across Toronto and the wider GTA.</p></details>
+ <details><summary>Can I book a same-day clean?</summary><p>Yes, same-day booking is available when there’s space in the schedule. Send your request early in the day.</p></details>
+ <details><summary>Are you insured?</summary><p>Yes. Abby Cleaning Co. is fully insured for your peace of mind.</p></details>
+ <details><summary>What is steam cleaning, and where is it used?</summary><p>Steam cleaning uses hot vapour to loosen dirt from carpets, sofas, bathrooms and kitchens. It’s a good fit for deep cleans and move in / out jobs.</p></details>
+ <details><summary>Do I need to be home?</summary><p>Not always. Tell us how to access your space when you book and we’ll confirm the details with you.</p></details>
+</section>
+
+<footer id="contact">
+ <div class="fg">
+  <div><b>Abby Cleaning Co.</b><p>GTA’s premium cleaning &amp; steam experts. Fully insured, with same-day booking.</p></div>
+  <div><h3>Quick Links</h3><ul><li><a href="#scene">Home</a></li><li><a href="#results">Before &amp; After</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#faq">FAQs</a></li><li><a href="#book">Book a clean</a></li></ul></div>
+  <div><h3>Services</h3><ul><li>Residential cleaning</li><li>Deep clean</li><li>Move in / out</li><li>Carpet &amp; sofa steam</li><li>Commercial cleaning</li></ul></div>
+  <div><h3>Contact</h3><ul><li>Toronto &amp; the GTA, Ontario</li><li><a href="https://www.instagram.com/abbyclean/">Instagram: @abbyclean</a></li><li><a href="#book">Send a booking request</a></li></ul></div>
+ </div>
+ <p class="cp">© 2026 Abby Cleaning Co. All rights reserved.</p>
+</footer>
+
+<script>
+// Paste your AI video file name here (re-encode with: ffmpeg -i in.mp4 -c:v libx264 -g 1 -an out.mp4)
+var VIDEO_SRC = "";
+
+var scene=document.getElementById("scene"),zoom=document.getElementById("zoom"),vid=document.getElementById("vid"),
+ovs=[].slice.call(document.querySelectorAll(".ov")),hint=document.getElementById("hint");
+var useVideo=false,cl=document.getElementById("cl"),st=document.getElementById("st"),sp=document.getElementById("sp"),mk=document.getElementById("mk");
+[].slice.call(document.querySelectorAll("details")).forEach(function(d){d.open=true;});
+if(VIDEO_SRC){vid.src=VIDEO_SRC;vid.style.display="block";zoom.style.display="none";useVideo=true;}
+function clamp(x,a,b){return Math.min(b,Math.max(a,x));}
+function tick(){
+  var r=scene.getBoundingClientRect(),max=scene.offsetHeight-innerHeight;
+  var p=clamp(-r.top/max,0,1);
+  if(useVideo){if(vid.duration){vid.currentTime=vid.duration*p;}}
+  else{
+    var t=clamp((p-.08)/.8,0,1),dx=-650+1200*t,nx=990+dx,tr="translate("+dx.toFixed(1)+",0)";
+    cl.setAttribute("transform",tr);st.setAttribute("transform",tr);sp.setAttribute("transform",tr);
+    mk.setAttribute("width",Math.max(0,nx).toFixed(1));
+    zoom.style.transformOrigin=(clamp(nx/16,20,80)).toFixed(1)+"% 66%";
+    zoom.style.transform="scale("+(1+0.9*Math.pow(p,1.2)).toFixed(3)+")";
+  }
+  ovs.forEach(function(o){
+    var c=parseFloat(o.dataset.c),w=parseFloat(o.dataset.w);
+    var a=clamp(1.6-Math.abs(p-c)/w*1.4,0,1);
+    o.style.opacity=a;o.style.visibility=a<.03?"hidden":"visible";
+  });
+  hint.style.opacity=p<.03?.85:0;
+}
+addEventListener("scroll",function(){requestAnimationFrame(tick);},{passive:true});
+addEventListener("resize",tick);tick();
+/* Before & after sliders. To use real photos, add file names here, e.g. sofa:["sofa-before.jpg","sofa-after.jpg"] */
+var IMG={};
+function gl(){var s="",i;for(i=1;i<8;i++)s+='<line x1="'+i*50+'" y1="0" x2="'+i*50+'" y2="300"/>';for(i=1;i<6;i++)s+='<line x1="0" y1="'+i*50+'" x2="400" y2="'+i*50+'"/>';return s;}
+function cl2(){var s="",i;for(i=0;i<30;i++)s+='<line x1="0" y1="'+i*10+'" x2="400" y2="'+i*10+'"/>';return s;}
+var SC={
+ sofa:{b:'<rect width="400" height="300" fill="#e3f1f0"/><rect y="215" width="400" height="85" fill="#cdb48e"/><rect x="50" y="95" width="300" height="100" rx="22" fill="#fff"/><rect x="40" y="150" width="320" height="75" rx="20" fill="#f1f7f7"/><rect x="62" y="165" width="120" height="40" rx="10" fill="#1b8a8c"/>',
+  d:'<g fill="#5b4a2b" opacity=".6"><ellipse cx="240" cy="180" rx="34" ry="14"/><ellipse cx="130" cy="130" rx="22" ry="10"/><ellipse cx="300" cy="130" rx="26" ry="12"/></g><rect width="400" height="300" fill="#7d6a45" opacity=".25"/>'},
+ carpet:{b:'<rect width="400" height="300" fill="#2e9a9c"/><g stroke="#27898b" stroke-width="5">'+cl2()+'</g>',
+  d:'<g fill="#2b2415" opacity=".55"><ellipse cx="120" cy="110" rx="60" ry="30"/><ellipse cx="290" cy="190" rx="70" ry="34"/><circle cx="90" cy="230" r="22"/><circle cx="330" cy="70" r="18"/></g><rect width="400" height="300" fill="#7d6a45" opacity=".22"/>'},
+ kitchen:{b:'<rect width="400" height="300" fill="#e8f3f2"/><rect y="170" width="400" height="130" fill="#fff"/><rect x="120" y="150" width="160" height="60" rx="10" fill="#cfd9da"/><rect x="130" y="160" width="140" height="40" rx="8" fill="#eef3f3"/><rect x="195" y="90" width="10" height="60" fill="#9aa9ab"/><path d="M200 90 q40 -10 50 20" stroke="#9aa9ab" stroke-width="10" fill="none"/>',
+  d:'<g fill="#6b5a2e" opacity=".55"><circle cx="70" cy="210" r="14"/><circle cx="330" cy="230" r="18"/><ellipse cx="200" cy="180" rx="60" ry="14"/><circle cx="90" cy="120" r="8"/><circle cx="320" cy="100" r="10"/></g><rect y="170" width="400" height="130" fill="#7d6a45" opacity=".2"/>'},
+ bath:{b:'<rect width="400" height="300" fill="#f4fbfb"/><g stroke="#cfe0e0" stroke-width="2">'+gl()+'</g><rect x="40" y="170" width="320" height="90" rx="28" fill="#fff" stroke="#d6e4e4" stroke-width="3"/><rect x="170" y="60" width="8" height="50" fill="#9aa9ab"/><circle cx="174" cy="115" r="14" fill="#cfd9da"/>',
+  d:'<g fill="#3d4a33" opacity=".5"><circle cx="60" cy="100" r="16"/><circle cx="330" cy="70" r="20"/><circle cx="260" cy="200" r="22"/><circle cx="110" cy="230" r="18"/><ellipse cx="200" cy="255" rx="90" ry="8"/></g><rect width="400" height="300" fill="#7d6a45" opacity=".18"/>'}
+};
+/* Photo-style textured scenes (grain, fabric, tile, grime) */
+var DF=`<defs><filter id='gr'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .22 0'/></filter><filter id='st' x='-30%' y='-30%' width='160%' height='160%'><feTurbulence type='fractalNoise' baseFrequency='.035' numOctaves='3' seed='7' result='n'/><feDisplacementMap in='SourceGraphic' in2='n' scale='22'/><feGaussianBlur stdDeviation='2.5'/></filter><filter id='fb'><feTurbulence type='fractalNoise' baseFrequency='.5 .08' numOctaves='3'/><feColorMatrix values='0 0 0 0 .3 0 0 0 0 .27 0 0 0 0 .22 0 0 0 .55 0'/></filter><linearGradient id='vg' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#000' stop-opacity='.25'/><stop offset='.3' stop-opacity='0'/><stop offset='.75' stop-opacity='0'/><stop offset='1' stop-color='#000' stop-opacity='.32'/></linearGradient></defs>`;
+var TL=`<rect width='400' height='300' filter='url(#gr)'/><rect width='400' height='300' fill='url(#vg)'/>`;
+function sb(y0,y1){var s="",r=0,y,x,o;for(y=y0;y<=y1;y+=22){s+='<line x1="0" y1="'+y+'" x2="400" y2="'+y+'"/>';o=(r++%2)?0:32;for(x=o;x<400;x+=64)s+='<line x1="'+x+'" y1="'+y+'" x2="'+x+'" y2="'+(y+22)+'"/>';}return s;}
+function vc(){var s="",x;for(x=10;x<400;x+=26)s+='<line x1="'+x+'" y1="0" x2="'+x+'" y2="300"/>';return s;}
+var FILM=`<rect width='400' height='300' fill='#8a7a55' opacity='.17'/>`;
+SC={
+ sofa:{b:DF+`<defs><linearGradient id='w1' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#f3efe8'/><stop offset='1' stop-color='#e2dccf'/></linearGradient><linearGradient id='f1' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#b98f5e'/><stop offset='1' stop-color='#8f6a40'/></linearGradient><linearGradient id='s1' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#dfe5e6'/><stop offset='1' stop-color='#b9c3c5'/></linearGradient></defs><rect width='400' height='300' fill='url(#w1)'/><rect y='200' width='400' height='100' fill='url(#f1)'/><g stroke='#7d5a35' stroke-opacity='.5'><line x1='0' y1='224' x2='400' y2='224'/><line x1='0' y1='252' x2='400' y2='252'/><line x1='0' y1='284' x2='400' y2='284'/></g><rect y='196' width='400' height='8' fill='#fff' opacity='.7'/><ellipse cx='200' cy='262' rx='190' ry='20' fill='#000' opacity='.25'/><rect x='40' y='108' width='320' height='112' rx='26' fill='url(#s1)'/><rect x='62' y='118' width='84' height='72' rx='16' fill='#e8edee' stroke='#b0bcbe'/><rect x='158' y='118' width='84' height='72' rx='16' fill='#e8edee' stroke='#b0bcbe'/><rect x='254' y='118' width='84' height='72' rx='16' fill='#e8edee' stroke='#b0bcbe'/><rect x='28' y='140' width='44' height='112' rx='20' fill='#cdd6d7'/><rect x='328' y='140' width='44' height='112' rx='20' fill='#cdd6d7'/><rect x='60' y='178' width='280' height='54' rx='14' fill='#e2e8e9' stroke='#b0bcbe'/><rect x='46' y='250' width='12' height='14' fill='#5b4026'/><rect x='342' y='250' width='12' height='14' fill='#5b4026'/><rect x='72' y='146' width='56' height='56' rx='12' fill='#1b8a8c' transform='rotate(-8 100 174)'/><rect x='40' y='108' width='320' height='150' filter='url(#fb)' opacity='.35'/>`+TL,
+  d:`<g filter='url(#st)'><ellipse cx='240' cy='205' rx='32' ry='13' fill='#6a4a25' opacity='.7'/><ellipse cx='130' cy='150' rx='18' ry='9' fill='#5a4a30' opacity='.6'/><ellipse cx='300' cy='150' rx='22' ry='11' fill='#7a3a3a' opacity='.5'/><ellipse cx='180' cy='196' rx='14' ry='7' fill='#4a3a20' opacity='.6'/></g>`+FILM},
+ carpet:{b:DF+`<rect width='400' height='300' fill='#cbc4b8'/><rect width='400' height='300' filter='url(#fb)'/><g stroke='#fff' stroke-opacity='.14' stroke-width='7'>`+vc()+`</g><rect width='400' height='26' fill='#eee8dc'/><rect y='26' width='400' height='14' fill='#000' opacity='.12'/>`+TL,
+  d:`<g filter='url(#st)'><ellipse cx='120' cy='120' rx='60' ry='28' fill='#3a2c18' opacity='.6'/><ellipse cx='290' cy='200' rx='70' ry='32' fill='#2e2414' opacity='.6'/><ellipse cx='80' cy='240' rx='30' ry='16' fill='#4a3a20' opacity='.55'/><ellipse cx='330' cy='90' rx='24' ry='14' fill='#5a3a30' opacity='.5'/><circle cx='210' cy='120' r='22' fill='none' stroke='#4a3a22' stroke-width='5' opacity='.6'/></g><rect width='400' height='300' fill='#6a5a40' opacity='.24'/>`},
+ kitchen:{b:DF+`<defs><linearGradient id='k1' x1='0' y1='0' x2='1' y2='0'><stop offset='0' stop-color='#e6ebec'/><stop offset='.5' stop-color='#fafcfc'/><stop offset='1' stop-color='#cfd8da'/></linearGradient><linearGradient id='k2' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#c9d2d5'/><stop offset='1' stop-color='#8e9ca1'/></linearGradient><linearGradient id='k3' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#dcd7ce'/><stop offset='1' stop-color='#b5aea2'/></linearGradient></defs><rect width='400' height='300' fill='#f1f4f3'/><g stroke='#cfd6d5' stroke-width='1.5'>`+sb(0,150)+`</g><rect y='150' width='400' height='34' fill='url(#k3)'/><rect y='150' width='400' height='4' fill='#fff' opacity='.6'/><rect y='184' width='400' height='116' fill='#85705a'/><line x1='200' y1='190' x2='200' y2='300' stroke='#5e4c3a' stroke-width='2'/><ellipse cx='200' cy='166' rx='94' ry='16' fill='url(#k2)'/><ellipse cx='200' cy='164' rx='82' ry='11' fill='#e3e9eb'/><circle cx='200' cy='165' r='4' fill='#7a878b'/><path d='M200 158 V96 q0 -22 26 -22 h14' stroke='url(#k1)' stroke-width='12' fill='none' stroke-linecap='round'/><rect x='186' y='148' width='28' height='14' rx='4' fill='#c4ced1'/>`+TL,
+  d:`<g filter='url(#st)' fill='#7a5f2a' opacity='.55'><circle cx='60' cy='60' r='10'/><circle cx='320' cy='80' r='14'/><circle cx='270' cy='40' r='7'/><circle cx='110' cy='110' r='9'/><ellipse cx='200' cy='162' rx='60' ry='6'/></g><g stroke='#5a4a28' stroke-opacity='.45' stroke-width='2'>`+sb(0,150)+`</g><g fill='#9aa59c' opacity='.6'><circle cx='150' cy='168' r='3'/><circle cx='172' cy='162' r='2'/><circle cx='240' cy='170' r='3'/><circle cx='260' cy='164' r='2'/></g>`+FILM},
+ bath:{b:DF+`<defs><linearGradient id='t1' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#ffffff'/><stop offset='1' stop-color='#d3dcdc'/></linearGradient></defs><rect width='400' height='300' fill='#f6f8f8'/><g stroke='#d9e1e1' stroke-width='2'>`+gl()+`</g><rect y='225' width='400' height='75' fill='#cfd6d6'/><ellipse cx='200' cy='262' rx='180' ry='14' fill='#000' opacity='.2'/><path d='M30 175 h340 v55 q0 28 -28 28 H58 q-28 0 -28 -28z' fill='url(#t1)'/><rect x='24' y='165' width='352' height='16' rx='8' fill='#fff'/><rect x='196' y='20' width='8' height='84' fill='#aab4b8'/><ellipse cx='200' cy='108' rx='26' ry='8' fill='#8f9ca1'/><rect x='150' y='128' width='22' height='10' fill='#aab4b8'/>`+TL,
+  d:`<g stroke='#4a5438' stroke-opacity='.6' stroke-width='3' filter='url(#st)'>`+gl()+`</g><g fill='#2f3a26' opacity='.55' filter='url(#st)'><circle cx='50' cy='150' r='14'/><circle cx='350' cy='140' r='18'/><circle cx='120' cy='40' r='10'/><ellipse cx='200' cy='168' rx='150' ry='6'/></g><g fill='#a89a6a' opacity='.45' filter='url(#st)'><ellipse cx='120' cy='215' rx='40' ry='14'/><ellipse cx='270' cy='235' rx='50' ry='12'/></g><circle cx='161' cy='140' r='7' fill='#8a4a22' opacity='.6' filter='url(#st)'/>`+FILM}
+};
+var BA=[["sofa","Sofa steam cleaning"],["carpet","Carpet deep clean"],["kitchen","Kitchen and sink"],["bath","Bathroom and grout"]],cards=[];
+function layer(k,dirty){
+  if(IMG[k])return '<img src="'+IMG[k][dirty?0:1]+'" alt="">';
+  return '<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+SC[k].b+(dirty?SC[k].d:"")+'</svg>';
+}
+BA.forEach(function(it){
+  var w=document.createElement("div");
+  w.innerHTML='<div class="ba" tabindex="0" role="slider" aria-label="Before and after: '+it[1]+'">'+layer(it[0],false)+'<div class="bf">'+layer(it[0],true)+'</div><div class="hd"></div><span class="tg l">Before</span><span class="tg r">After</span></div><p class="bat">'+it[1]+'</p>';
+  document.getElementById("bas").appendChild(w);
+  var el=w.firstChild,c={el:el,manual:false};cards.push(c);
+  function set(p){p=clamp(p,3,97);el.style.setProperty("--p",p+"%");el.setAttribute("aria-valuenow",Math.round(p));c.p=p;}
+  function mv(e){var r=el.getBoundingClientRect();set((e.clientX-r.left)/r.width*100);}
+  var down=false;
+  el.addEventListener("pointerdown",function(e){down=true;c.manual=true;el.setPointerCapture(e.pointerId);mv(e);});
+  el.addEventListener("pointermove",function(e){if(down)mv(e);});
+  el.addEventListener("pointerup",function(){down=false;});
+  el.addEventListener("keydown",function(e){if(e.key==="ArrowLeft"){c.manual=true;set((c.p||50)-5);}if(e.key==="ArrowRight"){c.manual=true;set((c.p||50)+5);}});
+  c.set=set;
+});
+function baTick(){
+  cards.forEach(function(c){
+    if(c.manual)return;
+    var r=c.el.getBoundingClientRect(),t=clamp((innerHeight-r.top)/(innerHeight+r.height),0,1);
+    c.set(8+84*t);
+  });
+}
+addEventListener("scroll",baTick,{passive:true});addEventListener("resize",baTick);baTick();
+var bg=document.getElementById("burger"),lk=document.getElementById("links");
+function menu(o){lk.classList.toggle("open",o);bg.setAttribute("aria-expanded",o);bg.setAttribute("aria-label",o?"Close menu":"Open menu");}
+bg.addEventListener("click",function(){menu(!lk.classList.contains("open"));});
+[].slice.call(lk.querySelectorAll("a")).forEach(function(a){a.addEventListener("click",function(){menu(false);});});
+addEventListener("keydown",function(e){if(e.key==="Escape")menu(false);});
+var rf=document.getElementById("rform");
+document.getElementById("rbtn").addEventListener("click",function(){rf.style.display=rf.style.display==="grid"?"none":"grid";});
+rf.addEventListener("submit",function(e){
+  e.preventDefault();
+  var d=new FormData(rf),n=parseInt(d.get("rate"),10),c=document.createElement("div");c.className="rc";
+  var s=document.createElement("div");s.className="stars";s.textContent="★".repeat(n)+"☆".repeat(5-n);
+  var p=document.createElement("p");p.textContent=d.get("rtext");
+  var b=document.createElement("b");b.textContent=d.get("rname");
+  c.appendChild(s);c.appendChild(p);c.appendChild(b);
+  var box=document.getElementById("revs");box.insertBefore(c,box.firstChild);
+  rf.reset();rf.style.display="none";document.getElementById("rok").style.display="block";
+});
+document.getElementById("f").addEventListener("submit",function(e){
+  e.preventDefault();document.getElementById("ok").style.display="block";this.reset();
+});
+</script>
+</body>
+</html>
